@@ -3,6 +3,7 @@ package Services;
 import ModelsDTO.DashboardDTO;
 import ModelsDTO.OrderPreparingDTO;
 import ModelsDTO.OrderPreparingItemDTO;
+import ModelsDTO.OrderStatusPage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -126,5 +127,67 @@ public class OrderingServices {
         int pendingList = obj.optInt("preparingCount",0);
 
         return new DashboardDTO(BigDecimal.valueOf(revenue), todayCount, pendingList);
+    }
+    public List<OrderPreparingDTO> GetAllOrder() throws Exception{
+        URL url = new URL(BASE_URL + "GetAllOrder");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.connect();
+
+        int responseCode = connection.getResponseCode();
+        if(responseCode != 200){
+            return new ArrayList<>();
+        }
+
+        String jsonResponse = getResponseFromConnection(connection);
+
+        JSONArray jsonArray =new JSONArray(jsonResponse);
+        List<OrderPreparingDTO> resultList = new ArrayList<>();
+        for(int i = 0 ; i < jsonArray.length() ; i++){
+            JSONObject obj = jsonArray.getJSONObject(i);
+
+            int orderID = obj.getInt("orderID");
+            String orderNo = obj.getString("orderNo");
+            String pickupCode = obj.optString("pickupCode", "N/A");
+            String customerName = obj.getString("customerName");
+            String orderTime = obj.getString("orderTime");
+            String status = obj.getString("status");
+
+            JSONArray itemsArray = obj.getJSONArray("items");
+            List<OrderPreparingItemDTO> itemsList = new ArrayList<>();
+            for (int j = 0; j < itemsArray.length(); j++) {
+                JSONObject itemObj = itemsArray.getJSONObject(j);
+
+                itemsList.add(new OrderPreparingItemDTO(
+                        itemObj.getString("beverageName"),
+                        itemObj.getInt("quantity"),
+                        itemObj.getString("description")
+                ));
+            }
+            resultList.add(new OrderPreparingDTO(orderID, orderNo, pickupCode, customerName, orderTime, status, itemsList));
+        }
+        return resultList;
+    }
+    public OrderStatusPage GetOrderStatusPage() throws Exception{
+        URL url = new URL(BASE_URL + "GetOrderStatusPage");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.connect();
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode != 200){
+
+            throw new Exception("Failed to load dashboard stats. Code: " + responseCode);
+        }
+        String jsonResponse = getResponseFromConnection(connection);
+        JSONObject obj = new JSONObject(jsonResponse);
+
+        int preparing = obj.optInt("preparing", 0);
+
+        int completedToday = obj.optInt("completedToday", 0);
+
+        int completed = obj.optInt("completed",0);
+
+        return new OrderStatusPage(preparing, completedToday, completed);
     }
 }
