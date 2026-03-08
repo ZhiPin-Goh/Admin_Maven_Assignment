@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/markAsReady", "/markAsComplete"})
-public class OrderStatus extends HttpServlet {
+public class ChangeOrderStatus extends HttpServlet {
     OrderingServices orderingServices = new OrderingServices();
 
     @Override

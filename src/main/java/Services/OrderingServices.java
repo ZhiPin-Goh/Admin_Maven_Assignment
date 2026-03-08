@@ -168,8 +168,8 @@ public class OrderingServices {
         }
         return resultList;
     }
-    public OrderStatusPage GetOrderStatusPage() throws Exception{
-        URL url = new URL(BASE_URL + "GetOrderStatusPage");
+    public OrderStatusPage GetOrderStatusBar() throws Exception{
+        URL url = new URL(BASE_URL + "GetOrderStatusBar");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.connect();

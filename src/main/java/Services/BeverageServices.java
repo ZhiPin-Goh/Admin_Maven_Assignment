@@ -181,7 +181,7 @@ public class BeverageServices {
             throw  new Exception(responseMsg);
         }
     }
-    public  String DeleteBeverge(int id) throws Exception{
+    public  String DeleteBeverage(int id) throws Exception{
         URL url = new URL(BASE_URL + "DeleteBeverage/" + id);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty("Content-Type", "application/json");

@@ -3,12 +3,14 @@ package Services;
 import Models.IceLevels;
 import Models.Sizes;
 import Models.SugarLevels;
+import jdk.internal.org.jline.terminal.Size;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -17,6 +19,35 @@ import java.util.List;
 
 public class DrinkOptionServices {
     private static final String BASE_URL = "http://localhost:5018/api/ManageDrinkOption/";
+    private String getResponseFromConnection(HttpURLConnection connection) throws Exception {
+        int responseCode = connection.getResponseCode();
+        InputStream inputStream;
+
+        // 1. 选频道
+        if (responseCode >= 200 && responseCode < 300) {
+            inputStream = connection.getInputStream();
+        } else {
+            inputStream = connection.getErrorStream();
+        }
+
+        // 2. 读数据
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+        StringBuilder response = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            response.append(line);
+        }
+        reader.close();
+
+        String responseMsg = response.toString();
+
+        // 3. 决定结果
+        if (responseCode >= 200 && responseCode < 300) {
+            return responseMsg; // 成功，返回消息
+        } else {
+            throw new Exception(responseMsg); // 失败，抛出异常
+        }
+    }
     public List<Sizes> GetDrinkSize() throws Exception {
         URL url = new URL(BASE_URL + "GetSizes");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -94,5 +125,81 @@ public class DrinkOptionServices {
             list.add(new SugarLevels(id, sugarOption));
         }
         return list;
+    }
+    public String CreateSize(Sizes sizes) throws Exception{
+        URL url = new URL(BASE_URL + "CreateSize");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+
+        JSONObject obj = new JSONObject();
+        obj.put("ID", 0);
+        obj.put("BeverageSize", sizes.getBeverageSize());
+        obj.put("PriceModifier", sizes.getPriceModifier());
+
+        OutputStream outputStream = connection.getOutputStream();
+        outputStream.write(obj.toString().getBytes("UTF-8"));
+        outputStream.close();
+        return getResponseFromConnection(connection);
+    }
+    public String CreateIceLevel(IceLevels iceLevels) throws Exception{
+        URL url = new URL(BASE_URL + "CreateIceLevel");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+
+        JSONObject obj = new JSONObject();
+        obj.put("ID", 0);
+        obj.put("IceOption", iceLevels.getIceOption());
+
+        OutputStream outputStream = connection.getOutputStream();
+        outputStream.write(obj.toString().getBytes("UTF-8"));
+        outputStream.close();
+        return getResponseFromConnection(connection);
+    }
+    public String CreateSugarLevel(SugarLevels sugarLevels) throws Exception{
+        URL url = new URL(BASE_URL + "CreateSugarLevel");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+
+        JSONObject obj = new JSONObject();
+        obj.put("ID", 0);
+        obj.put("SugarOption", sugarLevels.getSugarOption());
+
+        OutputStream outputStream = connection.getOutputStream();
+        outputStream.write(obj.toString().getBytes("UTF-8"));
+        outputStream.close();
+        return getResponseFromConnection(connection);
+    }
+    public String DeleteSize(int id) throws Exception{
+        URL url = new URL(BASE_URL + "DeleteSize/" + id);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        return getResponseFromConnection(connection);
+    }
+    public String DeleteIceLevel(int id) throws Exception{
+        URL url = new URL(BASE_URL + "DeleteIceLevel/" + id);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        return getResponseFromConnection(connection);
+    }
+    public String DeleteSugarLevel(int id) throws Exception{
+        URL url = new URL(BASE_URL + "DeleteSugarLevel/" + id);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        return getResponseFromConnection(connection);
     }
 }
