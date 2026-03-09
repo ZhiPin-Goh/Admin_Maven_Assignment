@@ -3,7 +3,6 @@ package Services;
 import Models.IceLevels;
 import Models.Sizes;
 import Models.SugarLevels;
-import jdk.internal.org.jline.terminal.Size;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,15 +21,11 @@ public class DrinkOptionServices {
     private String getResponseFromConnection(HttpURLConnection connection) throws Exception {
         int responseCode = connection.getResponseCode();
         InputStream inputStream;
-
-        // 1. 选频道
         if (responseCode >= 200 && responseCode < 300) {
             inputStream = connection.getInputStream();
         } else {
             inputStream = connection.getErrorStream();
         }
-
-        // 2. 读数据
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
         StringBuilder response = new StringBuilder();
         String line;
@@ -40,12 +35,10 @@ public class DrinkOptionServices {
         reader.close();
 
         String responseMsg = response.toString();
-
-        // 3. 决定结果
         if (responseCode >= 200 && responseCode < 300) {
-            return responseMsg; // 成功，返回消息
+            return responseMsg;
         } else {
-            throw new Exception(responseMsg); // 失败，抛出异常
+            throw new Exception(responseMsg);
         }
     }
     public List<Sizes> GetDrinkSize() throws Exception {
@@ -126,6 +119,7 @@ public class DrinkOptionServices {
         }
         return list;
     }
+
     public String CreateSize(Sizes sizes) throws Exception{
         URL url = new URL(BASE_URL + "CreateSize");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -143,6 +137,7 @@ public class DrinkOptionServices {
         outputStream.close();
         return getResponseFromConnection(connection);
     }
+
     public String CreateIceLevel(IceLevels iceLevels) throws Exception{
         URL url = new URL(BASE_URL + "CreateIceLevel");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -159,6 +154,7 @@ public class DrinkOptionServices {
         outputStream.close();
         return getResponseFromConnection(connection);
     }
+
     public String CreateSugarLevel(SugarLevels sugarLevels) throws Exception{
         URL url = new URL(BASE_URL + "CreateSugarLevel");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();

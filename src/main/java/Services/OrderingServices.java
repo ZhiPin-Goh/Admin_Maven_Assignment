@@ -42,8 +42,6 @@ public class OrderingServices {
         reader.close();
 
         String responseMsg = response.toString();
-        //System.out.println("Status: " + responseCode + " | Msg: " + responseMsg);
-
         if (responseCode >= 200 && responseCode < 300) {
             return responseMsg;
         } else {

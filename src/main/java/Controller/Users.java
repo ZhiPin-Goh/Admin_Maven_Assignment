@@ -1,7 +1,7 @@
 package Controller;
 
-import ModelsDTO.OrderPreparingDTO;
-import Services.OrderingServices;
+import Models.User;
+import Services.UserServices;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,9 +12,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/ordersList")
-public class Orders extends HttpServlet {
-    OrderingServices orderingServices = new OrderingServices();
+@WebServlet("/users")
+public class Users extends HttpServlet {
+    UserServices userServices = new UserServices();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,10 +24,11 @@ public class Orders extends HttpServlet {
             response.sendRedirect("login.jsp");
         }
         try{
-            List<OrderPreparingDTO> orderList = orderingServices.GetAllOrder();
-            request.setAttribute("orderList", orderList);
-            request.getRequestDispatcher("manage-orders").forward(request,response);
-        } catch (Exception ex) {
+            List<User> users = userServices.getAllUser();
+            request.setAttribute("users", users);
+            request.getRequestDispatcher("manage-users").forward(request, response);
+        }
+        catch (Exception ex){
             request.setAttribute("errorMessage", ex.getMessage());
             request.getRequestDispatcher("index").forward(request, response);
         }

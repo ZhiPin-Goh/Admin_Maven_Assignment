@@ -46,6 +46,7 @@ public class UserServices {
             throw new Exception(responseMsg); // 失败，抛出异常
         }
     }
+
     public List<User> getAllUser() throws Exception {
         URL url = new URL(BASE_URL + "GetAllUsers");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -81,36 +82,6 @@ public class UserServices {
         return list;
     }
 
-    public User SearchUserByID(int id) throws  Exception{
-        URL url = new URL(BASE_URL + "GetUserByID/" + id);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.connect();
-
-        int responseCode = connection.getResponseCode();
-        if (responseCode !=200){
-            throw new Exception("Server Error: "+ responseCode);
-        }
-
-        InputStream inputStream = connection.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        StringBuilder result = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            result.append(line);
-        }
-        JSONObject obj = new JSONObject(result.toString());
-        int userID = obj.getInt("id");
-        String name = obj.getString("userName");
-        String email = obj.getString("email");
-        String phoneNumber = obj.optString("phoneNumber", "N/A");
-        String password = obj.optString("password", "N/A");
-        String userCode = obj.getString("userCode");
-        String status = obj.getString("status");
-        return new User(userID,  name, email, phoneNumber, password, 12, status, userCode);
-    }
-
-
     public String UnActiveUser(int id) throws Exception{
         URL url = new URL(BASE_URL + "UnActiveUser/" + id);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -127,8 +98,8 @@ public class UserServices {
         return getResponseFromConnection(connection);
     }
 
-    public String ResendOTP(String email) throws Exception{
-        URL url = new URL(BASE_URL + "ResendOTP");
+    public String SendEmailOTP(String email) throws Exception{
+        URL url = new URL(BASE_URL + "SendEmailOTP");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestMethod("POST");
