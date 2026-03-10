@@ -129,7 +129,7 @@ public class DrinkOptionServices {
 
         JSONObject obj = new JSONObject();
         obj.put("ID", 0);
-        obj.put("BeverageSize", sizes.getBeverageSize());
+        obj.put("Size", sizes.getBeverageSize());
         obj.put("PriceModifier", sizes.getPriceModifier());
 
         OutputStream outputStream = connection.getOutputStream();

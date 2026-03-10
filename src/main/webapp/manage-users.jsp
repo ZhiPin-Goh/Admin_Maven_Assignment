@@ -51,7 +51,8 @@
                         <th class="px-6 py-4 text-xs font-semibold text-[#4c9a66] uppercase tracking-wider">Email</th>
                         <th class="px-6 py-4 text-xs font-semibold text-[#4c9a66] uppercase tracking-wider">Phone Number</th>
                         <th class="px-6 py-4 text-xs font-semibold text-[#4c9a66] uppercase tracking-wider">Usercode</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-[#4c9a66] uppercase tracking-wider w-48">Status</th>
+                        <th class="px-6 py-4 text-xs font-semibold text-[#4c9a66] uppercase tracking-wider w-40">Status</th>
+                        <th class="px-6 py-4 text-xs font-semibold text-[#4c9a66] uppercase tracking-wider text-right w-40">Actions</th>
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-[#cfe7d7]">
@@ -74,25 +75,40 @@
                               <div class="flex flex-col items-start gap-1">
                                 <c:choose>
                                     <c:when test="${user.status == 'Active'}">
-                                        <div class="w-11 h-6 bg-[#13ec5b] rounded-full relative cursor-pointer">
-                                          <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
-                                        </div>
+                                        <form action="inactiveUser" method="post" class="m-0">
+                                            <input type="hidden" name="userid" value="${user.ID}">
+                                            <button type="submit" class="w-11 h-6 bg-[#13ec5b] rounded-full relative cursor-pointer border-none p-0 outline-none focus:ring-2 focus:ring-[#13ec5b] focus:ring-offset-1 transition-all" aria-label="Set user inactive">
+                                              <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+                                            </button>
+                                        </form>
                                         <span class="text-[10px] text-gray-500">${user.status}</span>
                                     </c:when>
                                     <c:otherwise>
-                                        <div class="w-11 h-6 bg-gray-200 rounded-full relative cursor-pointer">
-                                          <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
-                                        </div>
+                                        <form action="activeUser" method="post" class="m-0">
+                                            <input type="hidden" name="userid" value="${user.ID}">
+                                            <button type="submit" class="w-11 h-6 bg-gray-200 rounded-full relative cursor-pointer border-none p-0 outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-1 transition-all" aria-label="Set user active">
+                                              <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
+                                            </button>
+                                        </form>
                                         <span class="text-[10px] text-gray-400">${user.status}</span>
                                     </c:otherwise>
                                 </c:choose>
                               </div>
                             </td>
+                            <td class="px-6 py-4 text-right">
+                                <form action="sendOTP" method="post" class="m-0 inline-block">
+                                    <input type="hidden" name="email" value="${user.email}">
+                                    <button type="submit" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#cfe7d7] text-[#4c9a66] hover:bg-green-50 hover:text-green-700 hover:border-green-300 rounded-md text-xs font-semibold shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                        Send Email
+                                    </button>
+                                </form>
+                            </td>
                           </tr>
                       </c:forEach>
                       <c:if test="${empty users}">
                           <tr>
-                             <td colspan="5" class="px-6 py-8 text-center text-gray-500">No customers found.</td>
+                             <td colspan="6" class="px-6 py-8 text-center text-gray-500">No customers found.</td>
                           </tr>
                       </c:if>
                     </tbody>

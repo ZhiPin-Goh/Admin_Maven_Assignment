@@ -51,7 +51,7 @@ public class AddDrinkOption extends HttpServlet {
 
                     IceLevels newIce = new IceLevels(0, iceoption);
                     String result = drinkOptionServices.CreateIceLevel(newIce);
-                    session.setAttribute("successMessage", "Size added successfully!");
+                    session.setAttribute("successMessage", "Ice option added successfully!");
                     response.sendRedirect(targetPage);
                 }catch (Exception ex) {
                     session.setAttribute("errorMessage", "Failed to add Ice option: " + ex.getMessage());
@@ -65,7 +65,7 @@ public class AddDrinkOption extends HttpServlet {
 
                     SugarLevels newSugar = new SugarLevels(0, sugaroption);
                     String result = drinkOptionServices.CreateSugarLevel(newSugar);
-                    session.setAttribute("successMessage", "Size added successfully!");
+                    session.setAttribute("successMessage", "Sugar option added successfully!");
                     response.sendRedirect(targetPage);
                 }catch (Exception ex) {
                     session.setAttribute("errorMessage", "Failed to add Sugar option: " + ex.getMessage());

@@ -29,20 +29,24 @@ public class UserStatus extends HttpServlet {
                 try {
                     int id = Integer.parseInt(request.getParameter("userid"));
                     String result = userServices.ActiveUser(id);
+                    session.setAttribute("successMessage", "Status activated.");
                     response.sendRedirect(targetPage);
                 } catch (Exception ex) {
-                    request.setAttribute("errorMessage", ex.getMessage());
-                    request.getRequestDispatcher("manage-users").forward(request, response);
+                    session.setAttribute("errorMessage", ex.getMessage());
+                    response.sendRedirect(targetPage);
                 }
+                break;
             case "/inactiveUser":
                 try{
                     int id = Integer.parseInt(request.getParameter("userid"));
                     String result = userServices.UnActiveUser(id);
+                    session.setAttribute("successMessage", "Status deactivated.");
                     response.sendRedirect(targetPage);
                 } catch (Exception ex) {
-                    request.setAttribute("errorMessage", ex.getMessage());
-                    request.getRequestDispatcher("manage-users").forward(request,response);
+                    session.setAttribute("errorMessage", ex.getMessage());
+                    response.sendRedirect(targetPage);
                 }
+                break;
         }
     }
 }

@@ -77,7 +77,7 @@ public class UserServices {
             String status = obj.optString("status", "N/A");
             String usercode = obj.optString("userCode", "N/A");
 
-            list.add(new User(id, email, username, phonenumber, password, otp, status, usercode));
+            list.add(new User(id, username, email, phonenumber, password, otp, status, usercode));
         }
         return list;
     }

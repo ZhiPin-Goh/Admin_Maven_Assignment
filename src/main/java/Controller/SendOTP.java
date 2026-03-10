@@ -26,10 +26,11 @@ public class SendOTP extends HttpServlet {
         try{
             String email = request.getParameter("email");
             String result = userServices.SendEmailOTP(email);
+            session.setAttribute("successMessage", "Email sent to " + email);
             response.sendRedirect(targetPage);
         } catch (Exception ex) {
-            request.setAttribute("errorMessage", "Failed to send email: "+ ex.getMessage());
-            request.getRequestDispatcher("manage-users").forward(request, response);
+            session.setAttribute("errorMessage", "Failed to send email: " + ex.getMessage());
+            response.sendRedirect(targetPage);
         }
     }
 }
