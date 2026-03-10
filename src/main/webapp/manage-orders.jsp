@@ -13,7 +13,7 @@
           <header class="bg-white px-8 py-6 shrink-0 z-10 border-b border-gray-200 shadow-sm">
             <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-6">
               <div>
-                <h2 class="text-3xl font-black text-[#0d1b12] tracking-tight">Order Management</h2>
+                <h2 class="text-3xl font-black text-[#0b3e2e] tracking-tight">Order Management</h2>
                 <p class="text-[#4c9a66] text-sm mt-1">Monitor and fulfill customer orders in real-time.</p>
               </div>
               <div class="flex gap-4">
@@ -24,7 +24,7 @@
                   </div>
                   <div class="flex flex-col">
                     <span class="text-[11px] text-[#2d8779] font-semibold uppercase tracking-wider">Active</span>
-                    <span class="text-xl font-black text-[#0d1b12] leading-none mt-0.5">${orderList != null ? orderList.size() : '0'}</span>
+                    <span class="text-xl font-black text-[#0b3e2e] leading-none mt-0.5">${orderList != null ? orderList.size() : '0'}</span>
                   </div>
                 </div>
 
@@ -35,7 +35,7 @@
                   </div>
                   <div class="flex flex-col">
                     <span class="text-[11px] text-[#2d8779] font-semibold uppercase tracking-wider">Preparing</span>
-                    <span class="text-xl font-black text-[#0d1b12] leading-none mt-0.5">${orderBar != null ? orderBar.preparing : '0'}</span>
+                    <span class="text-xl font-black text-[#0b3e2e] leading-none mt-0.5">${orderBar != null ? orderBar.preparing : '0'}</span>
                   </div>
                 </div>
 
@@ -46,7 +46,7 @@
                   </div>
                   <div class="flex flex-col">
                     <span class="text-[11px] text-[#2d8779] font-semibold uppercase tracking-wider">Completed</span>
-                    <span class="text-xl font-black text-[#0d1b12] leading-none mt-0.5">${orderBar != null ? orderBar.completed : '0'}</span>
+                    <span class="text-xl font-black text-[#0b3e2e] leading-none mt-0.5">${orderBar != null ? orderBar.completed : '0'}</span>
                   </div>
                 </div>
               </div>
@@ -69,14 +69,14 @@
                     type="text"
                     id="searchInput"
                     placeholder="Search order ID, customer name..."
-                    class="w-full pl-10 pr-4 py-2.5 bg-[#f6f8f6] border border-transparent focus:border-[#13ec5b] focus:ring-0 rounded-lg text-sm text-[#0d1b12] placeholder:text-[#4c9a66] transition-all outline-none"
+                    class="w-full pl-10 pr-4 py-2.5 bg-[#f6f8f6] border border-transparent focus:border-[#2ee59d] focus:ring-0 rounded-lg text-sm text-[#0b3e2e] placeholder:text-[#4c9a66] transition-all outline-none"
                   />
                 </div>
                 <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0" id="statusFilters">
-                  <button data-filter="All" class="filter-btn active shrink-0 h-9 px-4 rounded-lg bg-[#0d1b12] text-white text-sm font-medium transition-colors border border-transparent">All Orders</button>
-                  <button data-filter="Preparing" class="filter-btn shrink-0 h-9 px-4 rounded-lg bg-[#f6f8f6] text-[#0d1b12] hover:bg-green-100 text-sm font-medium transition-colors border border-transparent hover:border-green-200">Preparing</button>
-                  <button data-filter="Ready for Pickup" class="filter-btn shrink-0 h-9 px-4 rounded-lg bg-[#f6f8f6] text-[#0d1b12] hover:bg-green-100 text-sm font-medium transition-colors border border-transparent hover:border-green-200">Ready</button>
-                  <button data-filter="Completed" class="filter-btn shrink-0 h-9 px-4 rounded-lg bg-[#f6f8f6] text-[#0d1b12] hover:bg-green-100 text-sm font-medium transition-colors border border-transparent hover:border-green-200">Completed</button>
+                  <button data-filter="All" class="filter-btn active shrink-0 h-9 px-4 rounded-lg bg-[#0b3e2e] text-white text-sm font-medium transition-colors border border-transparent">All Orders</button>
+                  <button data-filter="Preparing" class="filter-btn shrink-0 h-9 px-4 rounded-lg bg-[#f6f8f6] text-[#0b3e2e] hover:bg-green-100 text-sm font-medium transition-colors border border-transparent hover:border-green-200">Preparing</button>
+                  <button data-filter="Ready for Pickup" class="filter-btn shrink-0 h-9 px-4 rounded-lg bg-[#f6f8f6] text-[#0b3e2e] hover:bg-green-100 text-sm font-medium transition-colors border border-transparent hover:border-green-200">Ready</button>
+                  <button data-filter="Completed" class="filter-btn shrink-0 h-9 px-4 rounded-lg bg-[#f6f8f6] text-[#0b3e2e] hover:bg-green-100 text-sm font-medium transition-colors border border-transparent hover:border-green-200">Completed</button>
                 </div>
               </div>
 
@@ -99,11 +99,11 @@
                             <td class="px-6 py-4"><span class="text-sm font-mono text-gray-600">${order.orderNo}</span></td>
                             <td class="px-6 py-4">
                               <div class="flex items-center gap-3">
-                                <div class="h-8 w-8 rounded-full bg-[#13ec5b]/20 text-green-800 flex items-center justify-center text-xs font-bold uppercase">
+                                <div class="h-8 w-8 rounded-full bg-[#2ee59d]/20 text-green-800 flex items-center justify-center text-xs font-bold uppercase">
                                   ${order.customerName.substring(0, 2)}
                                 </div>
                                 <div class="flex flex-col">
-                                  <span class="text-sm font-semibold text-[#0d1b12]">${order.customerName}</span>
+                                  <span class="text-sm font-semibold text-[#0b3e2e]">${order.customerName}</span>
                                 </div>
                               </div>
                             </td>
@@ -115,7 +115,7 @@
                               </div>
                             </td>
                             <td class="px-6 py-4"><span class="text-sm text-gray-600">${order.orderTime}</span></td>
-                            <td class="px-6 py-4"><span class="text-sm font-bold text-[#0d1b12]">${order.pickupCode}</span></td>
+                            <td class="px-6 py-4"><span class="text-sm font-bold text-[#0b3e2e]">${order.pickupCode}</span></td>
                             <td class="px-6 py-4 text-center">
                               <c:choose>
                                   <c:when test="${order.status == 'Preparing'}">
@@ -161,11 +161,11 @@
           btn.addEventListener('click', () => {
             // Update active state
             buttons.forEach(b => {
-              b.classList.remove('bg-[#0d1b12]', 'text-white');
-              b.classList.add('bg-[#f6f8f6]', 'text-[#0d1b12]');
+              b.classList.remove('bg-[#0b3e2e]', 'text-white');
+              b.classList.add('bg-[#f6f8f6]', 'text-[#0b3e2e]');
             });
-            btn.classList.remove('bg-[#f6f8f6]', 'text-[#0d1b12]');
-            btn.classList.add('bg-[#0d1b12]', 'text-white');
+            btn.classList.remove('bg-[#f6f8f6]', 'text-[#0b3e2e]');
+            btn.classList.add('bg-[#0b3e2e]', 'text-white');
 
             const filterValue = btn.getAttribute('data-filter');
             let visibleCount = 0;

@@ -13,11 +13,11 @@
           <header class="px-8 py-6 shrink-0 z-10 bg-white border-b border-gray-200 shadow-sm flex items-center justify-between">
             <div>
               <div class="flex items-center gap-2 text-sm text-[#4c9a66] mb-2 font-medium">
-                <a href="beverages" class="hover:text-[#13ec5b] transition-colors">Menu Management</a>
+                <a href="beverages" class="hover:text-[#2ee59d] transition-colors">Menu Management</a>
                 <svg xmlns="http://www.w3.org/2001/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                 <span class="text-gray-400">Add New Item</span>
               </div>
-              <h2 class="text-3xl font-black text-[#0d1b12] tracking-tight">Add New Beverage</h2>
+              <h2 class="text-3xl font-black text-[#0b3e2e] tracking-tight">Add New Beverage</h2>
             </div>
             
             <a href="beverages" class="flex items-center gap-2 text-gray-500 hover:text-gray-800 transition-colors font-semibold bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg">
@@ -38,32 +38,32 @@
                 <div class="p-8 flex flex-col gap-6">
                     
                     <div>
-                        <h3 class="text-lg font-bold text-[#0d1b12] mb-1">Basic Details</h3>
+                        <h3 class="text-lg font-bold text-[#0b3e2e] mb-1">Basic Details</h3>
                         <p class="text-sm text-gray-500 mb-4">Provide the primary information for the new menu item.</p>
                         
                         <div class="space-y-4">
                             <div>
                                 <label for="beverageName" class="block text-sm font-semibold text-gray-700 mb-1">Beverage Name <span class="text-red-500">*</span></label>
-                                <input type="text" id="beverageName" name="beverageName" required placeholder="e.g. Signature Brown Sugar Boba" class="w-full px-4 py-2.5 bg-[#f6f8f6] border border-gray-200 focus:border-[#13ec5b] focus:ring-1 focus:ring-[#13ec5b] rounded-lg text-sm text-[#0d1b12] transition-colors outline-none">
+                                <input type="text" id="beverageName" name="beverageName" required placeholder="e.g. Signature Brown Sugar Boba" class="w-full px-4 py-2.5 bg-[#f6f8f6] border border-gray-200 focus:border-[#2ee59d] focus:ring-1 focus:ring-[#2ee59d] rounded-lg text-sm text-[#0b3e2e] transition-colors outline-none">
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label for="category" class="block text-sm font-semibold text-gray-700 mb-1">Category <span class="text-red-500">*</span></label>
-                                    <input type="text" id="category" name="category" required placeholder="e.g. Milk Tea" class="w-full px-4 py-2.5 bg-[#f6f8f6] border border-gray-200 focus:border-[#13ec5b] focus:ring-1 focus:ring-[#13ec5b] rounded-lg text-sm text-[#0d1b12] transition-colors outline-none">
+                                    <input type="text" id="category" name="category" required placeholder="e.g. Milk Tea" class="w-full px-4 py-2.5 bg-[#f6f8f6] border border-gray-200 focus:border-[#2ee59d] focus:ring-1 focus:ring-[#2ee59d] rounded-lg text-sm text-[#0b3e2e] transition-colors outline-none">
                                 </div>
                                 <div>
                                     <label for="price" class="block text-sm font-semibold text-gray-700 mb-1">Base Price (RM) <span class="text-red-500">*</span></label>
                                     <div class="relative">
                                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold text-sm">RM</span>
-                                        <input type="number" id="price" name="price" step="0.01" min="0" required placeholder="0.00" class="w-full pl-12 pr-4 py-2.5 bg-[#f6f8f6] border border-gray-200 focus:border-[#13ec5b] focus:ring-1 focus:ring-[#13ec5b] rounded-lg text-sm text-[#0d1b12] transition-colors outline-none">
+                                        <input type="number" id="price" name="price" step="0.01" min="0" required placeholder="0.00" class="w-full pl-12 pr-4 py-2.5 bg-[#f6f8f6] border border-gray-200 focus:border-[#2ee59d] focus:ring-1 focus:ring-[#2ee59d] rounded-lg text-sm text-[#0b3e2e] transition-colors outline-none">
                                     </div>
                                 </div>
                             </div>
 
                             <div>
                                 <label for="description" class="block text-sm font-semibold text-gray-700 mb-1">Description</label>
-                                <textarea id="description" name="description" rows="3" placeholder="Describe the flavor profile and ingredients..." class="w-full px-4 py-2.5 bg-[#f6f8f6] border border-gray-200 focus:border-[#13ec5b] focus:ring-1 focus:ring-[#13ec5b] rounded-lg text-sm text-[#0d1b12] transition-colors outline-none resize-none"></textarea>
+                                <textarea id="description" name="description" rows="3" placeholder="Describe the flavor profile and ingredients..." class="w-full px-4 py-2.5 bg-[#f6f8f6] border border-gray-200 focus:border-[#2ee59d] focus:ring-1 focus:ring-[#2ee59d] rounded-lg text-sm text-[#0b3e2e] transition-colors outline-none resize-none"></textarea>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                     <hr class="border-[#cfe7d7]">
 
                     <div>
-                        <h3 class="text-lg font-bold text-[#0d1b12] mb-1">Options & Image</h3>
+                        <h3 class="text-lg font-bold text-[#0b3e2e] mb-1">Options & Image</h3>
                         <p class="text-sm text-gray-500 mb-4">Set temperature availability and upload a product photo.</p>
 
                         <div class="flex flex-col gap-6">
@@ -79,7 +79,7 @@
                                 <label class="flex items-center gap-3 cursor-pointer group">
                                     <div class="relative flex items-center justify-center">
                                         <input type="checkbox" name="hasHot" class="peer sr-only">
-                                        <div class="w-6 h-6 border-2 border-gray-300 rounded bg-white peer-checked:bg-[#13ec5b] peer-checked:border-[#13ec5b] transition-colors"></div>
+                                        <div class="w-6 h-6 border-2 border-gray-300 rounded bg-white peer-checked:bg-[#2ee59d] peer-checked:border-[#2ee59d] transition-colors"></div>
                                         <svg xmlns="http://www.w3.org/2001/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="absolute inset-0 m-auto opacity-0 peer-checked:opacity-100 transition-opacity"><polyline points="20 6 9 17 4 12"/></svg>
                                     </div>
                                     <div class="flex flex-col">
@@ -91,7 +91,7 @@
                                 <label class="flex items-center gap-3 cursor-pointer group">
                                     <div class="relative flex items-center justify-center">
                                         <input type="checkbox" name="hasIce" class="peer sr-only">
-                                        <div class="w-6 h-6 border-2 border-gray-300 rounded bg-white peer-checked:bg-[#13ec5b] peer-checked:border-[#13ec5b] transition-colors"></div>
+                                        <div class="w-6 h-6 border-2 border-gray-300 rounded bg-white peer-checked:bg-[#2ee59d] peer-checked:border-[#2ee59d] transition-colors"></div>
                                         <svg xmlns="http://www.w3.org/2001/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="absolute inset-0 m-auto opacity-0 peer-checked:opacity-100 transition-opacity"><polyline points="20 6 9 17 4 12"/></svg>
                                     </div>
                                     <div class="flex flex-col">
@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="bg-gray-50 px-8 py-5 border-t border-gray-200 flex justify-end">
-                    <button type="submit" class="bg-[#13ec5b] hover:bg-[#0eb545] text-green-900 font-extrabold py-2.5 px-6 rounded-lg text-sm uppercase cursor-pointer border-none shadow-sm tracking-wide transition-colors flex items-center gap-2">
+                    <button type="submit" class="bg-[#2ee59d] hover:bg-[#18c985] text-green-900 font-extrabold py-2.5 px-6 rounded-lg text-sm uppercase cursor-pointer border-none shadow-sm tracking-wide transition-colors flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2001/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         Save Beverage
                     </button>

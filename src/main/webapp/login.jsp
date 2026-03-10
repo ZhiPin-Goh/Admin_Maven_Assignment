@@ -17,7 +17,7 @@
             <div class="inline-flex items-center justify-center w-16 h-16 bg-[#13ec5b] rounded-2xl mb-4 shadow-lg transform -rotate-6">
               <svg xmlns="http://www.w3.org/2001/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-green-900"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
             </div>
-            <h1 class="text-2xl font-black text-white tracking-tight">Oolong Admin</h1>
+            <h1 class="text-2xl font-black text-white tracking-tight">Welcome Back</h1>
             <p class="text-[#13ec5b]/80 text-sm mt-1">Brewing excellence since 2024</p>
           </div>
 
@@ -59,13 +59,6 @@
                 </div>
               </div>
 
-              <div class="flex items-center justify-between">
-                <label class="flex items-center gap-2 cursor-pointer group">
-                  <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-[#13ec5b] focus:ring-[#13ec5b]" />
-                  <span class="text-xs text-[#4c9a66] group-hover:text-[#0d1b12] transition-colors">Remember me</span>
-                </label>
-                <a href="#" class="text-xs font-bold text-[#13ec5b] hover:text-[#0eb545] transition-colors">Forgot Password?</a>
-              </div>
 
               <button
                 type="submit"

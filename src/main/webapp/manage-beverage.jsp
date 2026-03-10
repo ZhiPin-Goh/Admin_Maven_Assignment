@@ -14,10 +14,10 @@
           <header class="px-8 py-6 shrink-0 z-10 bg-white border-b border-gray-200 shadow-sm">
             <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-6">
               <div>
-                <h2 class="text-3xl font-black text-[#0d1b12] tracking-tight">Menu Management</h2>
+                <h2 class="text-3xl font-black text-[#0b3e2e] tracking-tight">Menu Management</h2>
                 <p class="text-[#4c9a66] text-sm mt-1">Manage your drinks, prices, and availability.</p>
               </div>
-              <a href="add-beverage.jsp" class="flex items-center gap-2 bg-[#13ec5b] text-green-900 font-bold px-4 py-2.5 rounded-lg hover:bg-[#0eb545] transition-colors shadow-sm">
+              <a href="add-beverage.jsp" class="flex items-center gap-2 bg-[#2ee59d] text-green-900 font-bold px-4 py-2.5 rounded-lg hover:bg-[#18c985] transition-colors shadow-sm">
                 <svg xmlns="http://www.w3.org/2001/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                 Add New Item
               </a>
@@ -39,7 +39,7 @@
                   <input
                     type="text"
                     placeholder="Search for drinks, ingredients..."
-                    class="w-full pl-10 pr-4 py-2.5 bg-[#f6f8f6] border border-transparent focus:border-[#13ec5b] focus:ring-0 rounded-lg text-sm text-[#0d1b12] placeholder:text-[#4c9a66] transition-all outline-none"
+                    class="w-full pl-10 pr-4 py-2.5 bg-[#f6f8f6] border border-transparent focus:border-[#2ee59d] focus:ring-0 rounded-lg text-sm text-[#0b3e2e] placeholder:text-[#4c9a66] transition-all outline-none"
                   />
                 </div>
                 <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0" id="categoryFilters">
@@ -51,10 +51,10 @@
                       </c:if>
                   </c:forEach>
                   
-                  <button data-filter="All" class="filter-btn active shrink-0 h-9 px-4 rounded-lg bg-[#0d1b12] text-white text-sm font-medium transition-colors border border-transparent">All Items</button>
+                  <button data-filter="All" class="filter-btn active shrink-0 h-9 px-4 rounded-lg bg-[#0b3e2e] text-white text-sm font-medium transition-colors border border-transparent">All Items</button>
                   <c:forTokens items="${uniqueCategories}" delims="|" var="catStr">
                       <c:if test="${not empty catStr}">
-                          <button data-filter="${catStr}" class="filter-btn shrink-0 h-9 px-4 rounded-lg bg-[#f6f8f6] text-[#0d1b12] hover:bg-green-100 text-sm font-medium transition-colors border border-transparent hover:border-green-200">${catStr}</button>
+                          <button data-filter="${catStr}" class="filter-btn shrink-0 h-9 px-4 rounded-lg bg-[#f6f8f6] text-[#0b3e2e] hover:bg-green-100 text-sm font-medium transition-colors border border-transparent hover:border-green-200">${catStr}</button>
                       </c:if>
                   </c:forTokens>
                 </div>
@@ -84,7 +84,7 @@
                               <img src="${not empty item.beverageImagePath ? item.beverageImagePath : 'https://images.unsplash.com/photo-1558857563-b37102e99e00?w=100&h=100&fit=crop'}" alt="${item.beverageName}" class="w-12 h-12 rounded-lg object-cover" referrerpolicy="no-referrer" />
                             </td>
                             <td class="px-6 py-4">
-                              <span class="text-sm font-bold text-[#0d1b12]">${item.beverageName}</span>
+                              <span class="text-sm font-bold text-[#0b3e2e]">${item.beverageName}</span>
                             </td>
                             <td class="px-6 py-4">
                               <span class="text-xs text-gray-500 line-clamp-2" title="${item.beverageDescription}">${item.beverageDescription}</span>
@@ -110,7 +110,7 @@
                                     <c:when test="${item.available}">
                                         <form action="beverageUnAvailable" method="post" class="m-0">
                                             <input type="hidden" name="beverageid" value="${item.ID}">
-                                            <button type="submit" class="w-11 h-6 bg-[#13ec5b] rounded-full relative cursor-pointer border-none p-0 flex items-center shadow-sm transition-colors hover:bg-[#0eb545]">
+                                            <button type="submit" class="w-11 h-6 bg-[#2ee59d] rounded-full relative cursor-pointer border-none p-0 flex items-center shadow-sm transition-colors hover:bg-[#18c985]">
                                               <div class="w-5 h-5 bg-white rounded-full absolute right-0.5 shadow-md"></div>
                                             </button>
                                         </form>
@@ -130,7 +130,7 @@
                             </td>
                             <td class="px-6 py-4 text-right">
                               <button type="button" 
-                                      class="edit-beverage-btn text-[#4c9a66] hover:text-[#13ec5b] bg-[#f6f8f6] hover:bg-green-100 p-2 rounded-lg transition-colors group/edit"
+                                      class="edit-beverage-btn text-[#4c9a66] hover:text-[#2ee59d] bg-[#f6f8f6] hover:bg-green-100 p-2 rounded-lg transition-colors group/edit"
                                       data-id="${item.ID}"
                                       data-name="${fn:escapeXml(item.beverageName)}"
                                       data-category="${fn:escapeXml(item.beverageCategory)}"
@@ -163,7 +163,7 @@
     <div id="editModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-200 p-4">
         <div class="bg-white rounded-2xl shadow-xl w-full max-w-[600px] overflow-hidden transform translate-y-4 transition-transform duration-200" id="editModalContent">
             <header class="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-                <h3 class="text-xl font-bold text-[#0d1b12]">Edit Beverage</h3>
+                <h3 class="text-xl font-bold text-[#0b3e2e]">Edit Beverage</h3>
                 <button type="button" onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600 bg-white hover:bg-gray-100 p-1.5 rounded-lg border border-transparent hover:border-gray-200 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
@@ -173,36 +173,36 @@
                 <div class="space-y-4 mb-6">
                     <div>
                         <label for="edit_beveragename" class="block text-sm font-semibold text-gray-700 mb-1">Beverage Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="edit_beveragename" name="beveragename" required class="w-full px-4 py-2 bg-[#f6f8f6] border border-gray-200 focus:border-[#13ec5b] focus:ring-1 focus:ring-[#13ec5b] rounded-lg text-sm transition-colors outline-none">
+                        <input type="text" id="edit_beveragename" name="beveragename" required class="w-full px-4 py-2 bg-[#f6f8f6] border border-gray-200 focus:border-[#2ee59d] focus:ring-1 focus:ring-[#2ee59d] rounded-lg text-sm transition-colors outline-none">
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label for="edit_category" class="block text-sm font-semibold text-gray-700 mb-1">Category <span class="text-red-500">*</span></label>
-                            <input type="text" id="edit_category" name="category" required class="w-full px-4 py-2 bg-[#f6f8f6] border border-gray-200 focus:border-[#13ec5b] focus:ring-1 focus:ring-[#13ec5b] rounded-lg text-sm transition-colors outline-none">
+                            <input type="text" id="edit_category" name="category" required class="w-full px-4 py-2 bg-[#f6f8f6] border border-gray-200 focus:border-[#2ee59d] focus:ring-1 focus:ring-[#2ee59d] rounded-lg text-sm transition-colors outline-none">
                         </div>
                         <div>
                             <label for="edit_price" class="block text-sm font-semibold text-gray-700 mb-1">Base Price (RM) <span class="text-red-500">*</span></label>
-                            <input type="number" step="0.01" min="0" id="edit_price" name="price" required class="w-full px-4 py-2 bg-[#f6f8f6] border border-gray-200 focus:border-[#13ec5b] focus:ring-1 focus:ring-[#13ec5b] rounded-lg text-sm transition-colors outline-none">
+                            <input type="number" step="0.01" min="0" id="edit_price" name="price" required class="w-full px-4 py-2 bg-[#f6f8f6] border border-gray-200 focus:border-[#2ee59d] focus:ring-1 focus:ring-[#2ee59d] rounded-lg text-sm transition-colors outline-none">
                         </div>
                     </div>
                     <div>
                         <label for="edit_description" class="block text-sm font-semibold text-gray-700 mb-1">Description</label>
-                        <textarea id="edit_description" name="description" rows="2" class="w-full px-4 py-2 bg-[#f6f8f6] border border-gray-200 focus:border-[#13ec5b] focus:ring-1 focus:ring-[#13ec5b] rounded-lg text-sm transition-colors outline-none resize-none"></textarea>
+                        <textarea id="edit_description" name="description" rows="2" class="w-full px-4 py-2 bg-[#f6f8f6] border border-gray-200 focus:border-[#2ee59d] focus:ring-1 focus:ring-[#2ee59d] rounded-lg text-sm transition-colors outline-none resize-none"></textarea>
                     </div>
                     <div class="flex gap-6 mt-2 pt-4 border-t border-gray-100">
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="hotoption" id="edit_hotoption" value="true" class="w-4 h-4 text-[#13ec5b] rounded border-gray-300 focus:ring-[#13ec5b]">
+                            <input type="checkbox" name="hotoption" id="edit_hotoption" value="true" class="w-4 h-4 text-[#2ee59d] rounded border-gray-300 focus:ring-[#2ee59d]">
                             <span class="text-sm font-medium text-gray-700">Has Hot Option</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="iceoption" id="edit_iceoption" value="true" class="w-4 h-4 text-[#13ec5b] rounded border-gray-300 focus:ring-[#13ec5b]">
+                            <input type="checkbox" name="iceoption" id="edit_iceoption" value="true" class="w-4 h-4 text-[#2ee59d] rounded border-gray-300 focus:ring-[#2ee59d]">
                             <span class="text-sm font-medium text-gray-700">Has Ice Option</span>
                         </label>
                     </div>
                 </div>
                 <div class="flex justify-end gap-3 pt-4 border-t border-gray-100">
                     <button type="button" onclick="closeEditModal()" class="px-5 py-2 rounded-lg font-semibold text-gray-600 hover:bg-gray-100 transition-colors text-sm">Cancel</button>
-                    <button type="submit" class="px-5 py-2 rounded-lg font-bold bg-[#13ec5b] hover:bg-[#0eb545] text-green-900 transition-colors text-sm shadow-sm flex items-center gap-2">
+                    <button type="submit" class="px-5 py-2 rounded-lg font-bold bg-[#2ee59d] hover:bg-[#18c985] text-green-900 transition-colors text-sm shadow-sm flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
                         Save Changes
                     </button>
@@ -243,11 +243,11 @@
         buttons.forEach(btn => {
           btn.addEventListener('click', () => {
             buttons.forEach(b => {
-              b.classList.remove('bg-[#0d1b12]', 'text-white');
-              b.classList.add('bg-[#f6f8f6]', 'text-[#0d1b12]');
+              b.classList.remove('bg-[#0b3e2e]', 'text-white');
+              b.classList.add('bg-[#f6f8f6]', 'text-[#0b3e2e]');
             });
-            btn.classList.remove('bg-[#f6f8f6]', 'text-[#0d1b12]');
-            btn.classList.add('bg-[#0d1b12]', 'text-white');
+            btn.classList.remove('bg-[#f6f8f6]', 'text-[#0b3e2e]');
+            btn.classList.add('bg-[#0b3e2e]', 'text-white');
 
             activeCategory = btn.getAttribute('data-filter');
             updateVisibility();
