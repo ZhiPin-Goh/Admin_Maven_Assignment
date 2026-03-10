@@ -25,34 +25,37 @@ public class Index extends HttpServlet {
         String admin = (String) session.getAttribute("admin");
         if (admin == null){
             response.sendRedirect("login.jsp");
+            return;
         }
         String path =request.getServletPath();
         switch (path){
             case "/getDashboardStatusCount":
                 try{
                     DashboardDTO result = orderingServices.GetDashboardStatusCount();
+                    List<OrderPreparingDTO> list = orderingServices.GetOrderPreparing();
                     request.setAttribute("count", result);
-                    request.getRequestDispatcher("index").forward(request,response);
+                    request.setAttribute("list", list);
+                    request.getRequestDispatcher("index.jsp").forward(request,response);
                 }
                 catch (Exception ex){
                     request.setAttribute("errorMessage", ex.getMessage());
-                    request.getRequestDispatcher("index").forward(request,response);
+                    request.getRequestDispatcher("index.jsp").forward(request,response);
                 }
                 break;
             case "/getOrderPreparing":
                 try{
                     List<OrderPreparingDTO> list = orderingServices.GetOrderPreparing();
                     request.setAttribute("list", list);
-                    request.getRequestDispatcher("index").forward(request, response);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 catch (Exception ex){
                     request.setAttribute("errorMessage", ex.getMessage());
-                    request.getRequestDispatcher("index").forward(request,response);
+                    request.getRequestDispatcher("index.jsp").forward(request,response);
                 }
                 break;
             default:
                 request.setAttribute("errorMessage", "Invalid option");
-                request.getRequestDispatcher("index").forward(request,response);
+                request.getRequestDispatcher("index.jsp").forward(request,response);
                 break;
         }
     }

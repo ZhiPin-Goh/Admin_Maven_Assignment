@@ -22,14 +22,17 @@ public class Orders extends HttpServlet {
         String admin = (String) session.getAttribute("admin");
         if (admin == null){
             response.sendRedirect("login.jsp");
+            return;
         }
         try{
+            ModelsDTO.OrderStatusPage orderBar = orderingServices.GetOrderStatusBar();
             List<OrderPreparingDTO> orderList = orderingServices.GetAllOrder();
+            request.setAttribute("orderBar", orderBar);
             request.setAttribute("orderList", orderList);
-            request.getRequestDispatcher("manage-orders").forward(request,response);
+            request.getRequestDispatcher("manage-orders.jsp").forward(request,response);
         } catch (Exception ex) {
             request.setAttribute("errorMessage", ex.getMessage());
-            request.getRequestDispatcher("index").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 }

@@ -38,10 +38,10 @@ public class AddBeverage extends HttpServlet {
             InputStream fileContent = filePart.getInputStream();
 
             String result = beverageServices.CreateBeverage(name, desc, category, price, hot, ice, fileContent, fileName);
-            response.sendRedirect("manage-beverages.jsp");
+            response.sendRedirect("beverages");
         } catch (Exception ex) {
             request.setAttribute("errorMessage", ex.getMessage());
-            request.getRequestDispatcher("add-beverage").forward(request, response);
+            request.getRequestDispatcher("add-beverage.jsp").forward(request, response);
         }
     }
 }

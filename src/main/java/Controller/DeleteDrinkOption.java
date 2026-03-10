@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/deleteSize", "/deleteIceOption", "/deleteSugarOptoin"})
+@WebServlet(urlPatterns = {"/deleteSize", "/deleteIceOption", "/deleteSugarOption"})
 public class DeleteDrinkOption extends HttpServlet {
     DrinkOptionServices drinkOptionServices = new DrinkOptionServices();
 
@@ -49,10 +49,12 @@ public class DeleteDrinkOption extends HttpServlet {
                 try{
                     int id = Integer.parseInt(request.getParameter("sugaroptionid"));
                     String result = drinkOptionServices.DeleteSugarLevel(id);
+                    response.sendRedirect(targetPage);
                 } catch (Exception ex) {
                     session.setAttribute("errorMessage", "Failed to delete sugar option: " + ex.getMessage());
                     response.sendRedirect(targetPage);
                 }
+                break;
             default:
                 session.setAttribute("errorMessage", "Failed option");
                 response.sendRedirect(targetPage);

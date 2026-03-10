@@ -1,0 +1,5 @@
+{
+  "name": "Tea Admin Portal",
+  "description": "A demo management portal for a tea shop with dashboard, orders, menu, and customer management.",
+  "requestFramePermissions": []
+}

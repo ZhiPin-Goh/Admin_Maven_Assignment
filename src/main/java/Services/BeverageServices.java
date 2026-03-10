@@ -91,17 +91,17 @@ public class BeverageServices {
     }
     public String CreateBeverage(String name, String desc, String category, BigDecimal price,
                                  boolean hot, boolean ice, InputStream imageStream, String fileName) throws Exception {
-        String boundary = "===" + System.currentTimeMillis() + "===";
-        URL url = new URL(BASE_URL + "CreateBeverage");
+        String boundary = "----WebKitFormBoundary" + System.currentTimeMillis();
+        URL url = new URL(BASE_URL + "CreateBeverages");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
         connection.setRequestMethod("POST");
         connection.setDoOutput(true);
         try (OutputStream outputStream = connection.getOutputStream();
              PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, "UTF-8"), true)) {
-            addFormField(writer, boundary, "BeverageName", name);
-            addFormField(writer, boundary, "BeverageDescription", desc);
-            addFormField(writer, boundary, "BeverageCategory", desc);
+            addFormField(writer, boundary, "BeverageName", name != null ? name : "");
+            addFormField(writer, boundary, "BeverageDescription", desc != null ? desc : "");
+            addFormField(writer, boundary, "BeverageCategory", category != null ? category : "");
             addFormField(writer, boundary, "Price", String.valueOf(price));
             addFormField(writer, boundary, "HasHotOption", String.valueOf(hot));
             addFormField(writer, boundary, "HasIceOption", String.valueOf(ice));

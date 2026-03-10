@@ -25,7 +25,7 @@ public class ChangeOrderStatus extends HttpServlet {
         }
         String path =request.getServletPath();
         switch (path){
-            case "markAsReady":
+            case "/markAsReady":
                 try{
                     int orderID = Integer.parseInt(request.getParameter("orderID"));
                     String result = orderingServices.MarkAsReady(orderID);
@@ -35,7 +35,7 @@ public class ChangeOrderStatus extends HttpServlet {
                     request.getRequestDispatcher("index").forward(request, response);
                 }
                 break;
-            case "markAsComplete":
+            case "/markAsComplete":
                 try{
                     int orderID = Integer.parseInt(request.getParameter("orderID"));
                     String result = orderingServices.OrderingComplete(orderID);

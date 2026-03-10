@@ -44,6 +44,17 @@
       <artifactId>json</artifactId>
       <version>20240303</version>
     </dependency>
+    <!-- Jakarta JSTL -->
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>3.0.1</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>Admin_Maven_Assignment</finalName>

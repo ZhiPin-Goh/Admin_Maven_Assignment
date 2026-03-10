@@ -23,16 +23,17 @@ public class DrinkOption extends HttpServlet {
         String admin = (String) session.getAttribute("admin");
         if (admin == null){
             response.sendRedirect("login.jsp");
+            return;
         }
         try{
             request.setAttribute("sizes", drinkOptionServices.GetDrinkSize());
             request.setAttribute("sugars", drinkOptionServices.GetDrinkSugar());
             request.setAttribute("ices", drinkOptionServices.GetDrinkIce());
-            request.getRequestDispatcher("drink-option").forward(request, response);
+            request.getRequestDispatcher("drink-option.jsp").forward(request, response);
 
         } catch (Exception ex) {
             request.setAttribute("errorMessage", "Drink option not found");
-            request.getRequestDispatcher("index").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 }

@@ -22,15 +22,16 @@ public class Users extends HttpServlet {
         String admin = (String) session.getAttribute("admin");
         if (admin == null){
             response.sendRedirect("login.jsp");
+            return;
         }
         try{
             List<User> users = userServices.getAllUser();
             request.setAttribute("users", users);
-            request.getRequestDispatcher("manage-users").forward(request, response);
+            request.getRequestDispatcher("manage-users.jsp").forward(request, response);
         }
         catch (Exception ex){
             request.setAttribute("errorMessage", ex.getMessage());
-            request.getRequestDispatcher("index").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 }

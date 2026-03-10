@@ -147,7 +147,7 @@ public class DrinkOptionServices {
 
         JSONObject obj = new JSONObject();
         obj.put("ID", 0);
-        obj.put("IceOption", iceLevels.getIceOption());
+        obj.put("IceLevel", iceLevels.getIceOption());
 
         OutputStream outputStream = connection.getOutputStream();
         outputStream.write(obj.toString().getBytes("UTF-8"));
@@ -164,7 +164,7 @@ public class DrinkOptionServices {
 
         JSONObject obj = new JSONObject();
         obj.put("ID", 0);
-        obj.put("SugarOption", sugarLevels.getSugarOption());
+        obj.put("SugarLevel", sugarLevels.getSugarOption());
 
         OutputStream outputStream = connection.getOutputStream();
         outputStream.write(obj.toString().getBytes("UTF-8"));

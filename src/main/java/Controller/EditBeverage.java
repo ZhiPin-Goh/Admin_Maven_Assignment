@@ -33,10 +33,10 @@ public class EditBeverage extends HttpServlet {
             boolean hotoption = new Boolean(request.getParameter("hotoption"));
             EditBeverageDTO beverage = new EditBeverageDTO(id, name, description,category,price,iceoption,hotoption);
             String result = beverageServices.UpdateBeverage(beverage);
-            response.sendRedirect("manage-beverage.jsp");
+            response.sendRedirect("beverages");
         } catch (Exception ex) {
             request.setAttribute("errorMessage", "Failed to edit: "+ex.getMessage());
-            request.getRequestDispatcher("manage-beverage").forward(request, response);
+            request.getRequestDispatcher("beverages").forward(request, response);
         }
     }
 }

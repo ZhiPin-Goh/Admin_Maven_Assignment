@@ -15,13 +15,13 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name").toLowerCase();
         String password = request.getParameter("password").toLowerCase();
-        if (!name.equals("admin") && !password.equals("admin")){
-            request.setAttribute("errorMessage", "Invalid Name and Password");
-            request.getRequestDispatcher("login").forward(request, response);
+        if (!name.equals("admin") || !password.equals("admin")){
+            request.setAttribute("errorMessage", "Invalid Username or Password");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
         HttpSession session = request.getSession();
         session.setAttribute("admin", name);
-        response.sendRedirect("index");
+        response.sendRedirect("index.jsp");
     }
 }

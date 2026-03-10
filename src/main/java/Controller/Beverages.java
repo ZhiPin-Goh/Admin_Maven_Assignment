@@ -22,14 +22,15 @@ public class Beverages extends HttpServlet {
         String admin = (String) session.getAttribute("admin");
         if (admin == null){
             response.sendRedirect("login.jsp");
+            return;
         }
         try{
             List<Beverage> beverages = beverageServices.getAllBeverage();
             request.setAttribute("beverages",beverages);
-            request.getRequestDispatcher("manage-beverage").forward(request,response);
+            request.getRequestDispatcher("manage-beverage.jsp").forward(request,response);
         } catch (Exception ex) {
             request.setAttribute("errorMessage", ex.getMessage());
-            request.getRequestDispatcher("index").forward(request,response);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }
     }
 }
