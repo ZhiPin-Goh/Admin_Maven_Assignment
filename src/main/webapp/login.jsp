@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ page import="java.time.Year" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +79,8 @@
         </div>
 
         <p class="text-center mt-8 text-xs text-[#4c9a66]">
-          &copy; 2024 Oolong Tea Co. All rights reserved.
+          &copy; <%= Year.now().getValue() %>
+          Zen Tea. All right reserved.
         </p>
       </div>
     </div>
